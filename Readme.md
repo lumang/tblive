@@ -2,7 +2,7 @@
 千牛主播（tblive）
 ====
 
-tblive开源项目对应的产品是**千牛主播**，是一个独立的PC端主播工具，基于开源软件[OBS Studio](https://github.com/jp9000/obs-studio)来修改定制，增强了交互和功能上的可用性，同时引入统一登陆sdk（UnifiedAuthSDK.dll），可以支持淘宝账号的验证以及免登url的拼接，能更好的支持淘系webview页面。
+tblive开源项目对应的产品是**千牛主播**，是一个独立的PC端主播工具，基于开源软件[OBS Studio](https://github.com/jp9000/obs-studio)来修改定制.
 
 
 
@@ -34,6 +34,8 @@ https://cmake.org/files/v3.5/cmake-3.5.0-rc3-win32-x86.msi
 ![avatar](./img/cmake.png)
 点击'Configure'，然后选中COPY_DEPENDENCIES选项，再点击'Configure'，最后点击'Generate'
 
+
+
 ## 常见错误
 Policy CMP0071
 >Policy CMP0071 is not set: Let AUTOMOC and AUTOUIC process GENERATED files.
@@ -53,13 +55,13 @@ error C2275
 >错误	1	error C2275: “int64_t”: 将此类型用作表达式非法	D:\src\alibaba\tblive\libobs\util\platform.c	291	1	libobs
 ![avatar](./img/errorC2275.png)
 
-
-### 使用批处理编译
-
-obs_win_build.bat
-
+# 修改代作为录屏软件
+## 禁用登录操作
+## 将直播改为录制操作
 
 
-## Mac OS X 下开发环境
-TODO
+
+
+
+
 
