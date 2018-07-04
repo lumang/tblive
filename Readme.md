@@ -27,14 +27,15 @@ https://cmake.org/files/v3.5/cmake-3.5.0-rc3-win32-x86.msi
 
 ### 使用cmake-gui生成工程编译
 
-设置code source：比如 `F:/github/tblive`
+设置code source：比如 `D:/src/alibaba/tblive`
 
-设置build目录：`F:/github/tblive/build`
-
+设置build目录：`D:/src/alibaba/build`
+![avatar](./img/cmake.png)
 点击'Configure'，然后选中COPY_DEPENDENCIES选项，再点击'Configure'，最后点击'Generate'
 
 再用vs2013打开build目录下的obs-studio.sln，然后生成；生成的可执行程序在rundir目录下。
 
+![avatar](./img/vs-1.png)
 
 ### 使用批处理编译
 
