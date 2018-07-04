@@ -123,7 +123,7 @@ bool obs_init_module(obs_module_t *module)
 		return false;
 	if (module->loaded)
 		return true;
-
+	;
 	const char *profile_name =
 		profile_store_name(obs_get_profiler_name_store(),
 				"obs_init_module(%s)", module->file);

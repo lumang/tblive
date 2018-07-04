@@ -1074,10 +1074,11 @@ void obs_encoder_addref(obs_encoder_t *encoder)
 
 void obs_encoder_release(obs_encoder_t *encoder)
 {
+	obs_weak_encoder_t *control = encoder->control;
+
 	if (!encoder)
 		return;
 
-	obs_weak_encoder_t *control = encoder->control;
 	if (obs_ref_release(&control->ref)) {
 		// The order of operations is important here since
 		// get_context_by_name in obs.c relies on weak refs
@@ -1114,10 +1115,11 @@ obs_encoder_t *obs_encoder_get_ref(obs_encoder_t *encoder)
 
 obs_weak_encoder_t *obs_encoder_get_weak_encoder(obs_encoder_t *encoder)
 {
+	obs_weak_encoder_t *weak = encoder->control;
+
 	if (!encoder)
 		return NULL;
 
-	obs_weak_encoder_t *weak = encoder->control;
 	obs_weak_encoder_addref(weak);
 	return weak;
 }

@@ -128,10 +128,11 @@ static inline size_t obs_data_item_total_size(struct obs_data_item *item)
 
 static inline obs_data_t *get_item_obj(struct obs_data_item *item)
 {
+	obs_data_t **data = get_item_data(item);
+
 	if (!item)
 		return NULL;
 
-	obs_data_t **data = get_item_data(item);
 	if (!data)
 		return NULL;
 

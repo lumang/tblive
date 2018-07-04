@@ -1123,16 +1123,19 @@ static int run_program(fstream &logFile, int argc, char *argv[])
 		delete_oldest_file("tblive/profiler_data");
 
 		program.installTranslator(&translator);
-		
-		if (CommandLine::ForCurrentProcess()->HasSwitch( switches::kDisableLogin ))
-		{// Disable login
-			if (!program.OBSInit())
-				return 0;
-		}
-		else
-		{
-			program.ShowLoginWnd();
-		}
+		// ignor alibaba account
+		if (!program.OBSInit())
+			return 0;
+
+		//if (CommandLine::ForCurrentProcess()->HasSwitch( switches::kDisableLogin ))
+		//{// Disable login
+		//	if (!program.OBSInit())
+		//		return 0;
+		//}
+		//else
+		//{
+		//	program.ShowLoginWnd();
+		//}
 
 		prof.Stop();
 		PrintInitProfile();

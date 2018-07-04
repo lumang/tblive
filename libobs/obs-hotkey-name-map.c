@@ -244,13 +244,15 @@ static void obs_hotkey_name_map_insert(obs_hotkey_name_map_t *trie,
 static bool obs_hotkey_name_map_lookup(obs_hotkey_name_map_t *trie,
 		const char *key, int *v)
 {
+	size_t len = strlen(key);
+	size_t i = 0;
+
+	obs_hotkey_name_map_node_t *n = &trie->root;
+
 	if (!trie || !key)
 		return false;
 
-	size_t len = strlen(key);
-	obs_hotkey_name_map_node_t *n = &trie->root;
 
-	size_t i = 0;
 	for (; i < n->children.num;) {
 		obs_hotkey_name_map_edge_t *e = &n->children.array[i];
 

@@ -479,10 +479,12 @@ enum audio_action_type {
 struct audio_action {
 	uint64_t timestamp;
 	enum audio_action_type type;
-	union {
+	float vol;
+	bool set;
+	/*union {
 		float vol;
 		bool  set;
-	};
+	};*/
 };
 
 struct obs_weak_source {

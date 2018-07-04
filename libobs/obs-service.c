@@ -312,10 +312,11 @@ void obs_service_addref(obs_service_t *service)
 
 void obs_service_release(obs_service_t *service)
 {
+	obs_weak_service_t *control = service->control;
+
 	if (!service)
 		return;
 
-	obs_weak_service_t *control = service->control;
 	if (obs_ref_release(&control->ref)) {
 		// The order of operations is important here since
 		// get_context_by_name in obs.c relies on weak refs
@@ -352,10 +353,11 @@ obs_service_t *obs_service_get_ref(obs_service_t *service)
 
 obs_weak_service_t *obs_service_get_weak_service(obs_service_t *service)
 {
+	obs_weak_service_t *weak = service->control;
+
 	if (!service)
 		return NULL;
 
-	obs_weak_service_t *weak = service->control;
 	obs_weak_service_addref(weak);
 	return weak;
 }

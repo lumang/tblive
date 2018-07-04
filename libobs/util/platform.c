@@ -285,10 +285,11 @@ cleanup:
 int64_t os_get_file_size(const char *path)
 {
 	FILE* f = os_fopen(path, "rb");
+	int64_t sz = os_fgetsize(f);
+
 	if (!f)
 		return -1;
 
-	int64_t sz = os_fgetsize(f);
 	fclose(f);
 
 	return sz;

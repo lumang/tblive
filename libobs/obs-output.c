@@ -1665,10 +1665,11 @@ void obs_output_addref(obs_output_t *output)
 
 void obs_output_release(obs_output_t *output)
 {
+	obs_weak_output_t *control = output->control;
+
 	if (!output)
 		return;
 
-	obs_weak_output_t *control = output->control;
 	if (obs_ref_release(&control->ref)) {
 		// The order of operations is important here since
 		// get_context_by_name in obs.c relies on weak refs
@@ -1705,10 +1706,11 @@ obs_output_t *obs_output_get_ref(obs_output_t *output)
 
 obs_weak_output_t *obs_output_get_weak_output(obs_output_t *output)
 {
+	obs_weak_output_t *weak = output->control;
+
 	if (!output)
 		return NULL;
 
-	obs_weak_output_t *weak = output->control;
 	obs_weak_output_addref(weak);
 	return weak;
 }
