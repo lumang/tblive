@@ -4,7 +4,9 @@
 
 tblive开源项目对应的产品是**千牛主播**，是一个独立的PC端主播工具，基于开源软件[OBS Studio](https://github.com/jp9000/obs-studio)来修改定制.
 
-
+项目说明
+====
+tblive是一款优秀的基于obs-studio的直播软件，基于此本项目将添加单独录制的功能，可以一键开始，结束，配置录制文件格式，保存路径
 
 ## Windows下开发环境搭建
 
