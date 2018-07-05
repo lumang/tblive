@@ -642,9 +642,12 @@ void OBSBasic::on_startStreamBtn_clicked()
 {
 	tbliveLog.Log(lss_info, L"on_startStreamBtn_clicked");
 
-	if (!outputHandler->StreamingActive()) {
-		ui->startStreamBtn->setEnabled(false);
-		StartStreaming();
+	//if (!outputHandler->StreamingActive()) {
+	if (!outputHandler->RecordingActive()) {
+		//ui->startStreamBtn->setEnabled(false);
+		ui->startStreamBtn->setEnabled(true);
+		//StartStreaming(); //pull stream 
+		StartRecording();
 	}
 }
 
@@ -668,7 +671,8 @@ void OBSBasic::on_pauseStreamBtn_clicked()
 {
 	tbliveLog.Log(lss_info, L"on_pauseStreamBtn_clicked");
 
-	if (outputHandler->StreamingActive()) {
+	//if (outputHandler->StreamingActive()) {
+	if (outputHandler->RecordingActive()) {
 		// Already streaming
 		QMessageBox::StandardButton button =
 			QMessageBox::question(this,
@@ -680,7 +684,8 @@ void OBSBasic::on_pauseStreamBtn_clicked()
 
 		m_bPauseClicked = true;
 		ui->pauseStreamBtn->setEnabled(false);
-		StopStreaming();
+		//StopStreaming();
+		StopRecording();
 	}
 }
 
@@ -688,9 +693,11 @@ void OBSBasic::on_restartStreamBtn_clicked()
 {
 	tbliveLog.Log(lss_info, L"on_restartStreamBtn_clicked");
 
-	if (!outputHandler->StreamingActive()) {
+	//if (!outputHandler->StreamingActive()) {
+	if (!outputHandler->RecordingActive()) {
 		m_bRestartCliecked = true;
 		ui->restartStreamBtn->setEnabled(false);
+		//StartStreaming();
 		StartStreaming();
 	}
 }
@@ -699,7 +706,8 @@ void OBSBasic::on_stopStreamBtn_clicked()
 {
 	tbliveLog.Log(lss_info, L"on_stopStreamBtn_clicked");
 
-	if (outputHandler->StreamingActive()) {
+	//if (outputHandler->StreamingActive()) {
+	if (outputHandler->RecordingActive()) {
 		QMessageBox::StandardButton button =
 			QMessageBox::question(this,
 			QTStr("ConfirmStop.Title"),
@@ -708,7 +716,8 @@ void OBSBasic::on_stopStreamBtn_clicked()
 		if (button == QMessageBox::No)
 			return;
 
-		StopStreaming();
+		//StopStreaming();
+		StopRecording();
 	}
 }
 

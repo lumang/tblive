@@ -3611,8 +3611,12 @@ void OBSBasic::StopRecording()
 
 void OBSBasic::RecordingStart()
 {
+	m_streamingScene = obs_scene_get_source(GetCurrentScene());
+	SetTabStreamingStatus(QT_UTF8(obs_source_get_name(m_streamingScene)));
 	statusbar->RecordingStarted(outputHandler->fileOutput);
 	ui->recordButton->setText(QTStr("Basic.Main.StopRecording"));
+	ui->streamButton->setText(QTStr("Basi.Main.StopRecording"));
+	ui->streamButton->setEnabled(true);
 
 	if (ui->profileMenu->isEnabled()) {
 		ui->profileMenu->setEnabled(false);
@@ -3620,6 +3624,29 @@ void OBSBasic::RecordingStart()
 	}
 
 	blog(LOG_INFO, RECORDING_START);
+	if (!m_bIsStartedOnceBefore)
+	{// The first time succeed
+		ui->startStreamBtn->setEnabled(true);
+		ui->startStreamBtn->setVisible(false);
+
+		ui->pauseStreamBtn->setVisible(true);
+		ui->stopStreamBtn->setVisible(true);
+
+		m_bIsStartedOnceBefore = true;
+	}
+	else
+	{
+		// restart succeed
+		m_bRestartCliecked = false;
+		ui->restartStreamBtn->setEnabled(true);
+		ui->restartStreamBtn->setVisible(false);
+
+		ui->pauseStreamBtn->setVisible(true);
+		ui->stopStreamBtn->setVisible(true);
+	}
+
+	ui->bizWebview->SetStreamingStatus(TSS_START);
+	CurrentTabSceneUpdateControls();
 }
 
 void OBSBasic::RecordingStop(int code)
@@ -3652,7 +3679,8 @@ void OBSBasic::RecordingStop(int code)
 
 void OBSBasic::on_streamButton_clicked()
 {
-	if (outputHandler->StreamingActive()) {
+	//if (outputHandler->StreamingActive()) {
+	if (outputHandler->RecordingActive()) {
 // 		bool confirm = config_get_bool(GetGlobalConfig(), "BasicWindow",
 // 				"WarnBeforeStoppingStream");
 // 
@@ -3667,7 +3695,8 @@ void OBSBasic::on_streamButton_clicked()
 				return;
 		}
 
-		StopStreaming();
+		//StopStreaming();
+		StopRecording();
 	} else {
 // 		bool confirm = config_get_bool(GetGlobalConfig(), "BasicWindow",
 // 				"WarnBeforeStartingStream");
@@ -3682,7 +3711,8 @@ void OBSBasic::on_streamButton_clicked()
 // 				return;
 // 		}
 
-		StartStreaming();
+		//StartStreaming();
+		StartRecording();
 	}
 }
 
