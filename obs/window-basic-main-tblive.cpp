@@ -169,7 +169,8 @@ void OBSBasic::InitTbliveUI()
 
 	ui->sceneTabBar->setDrawBase(false);
 	ui->sceneTabBar->setExpanding(false);
-
+	
+	ui->bizWebview->setVisible(false);
 	connect(ui->sceneTabBar, SIGNAL(currentChanged(int)), this, SLOT(CurrentTabSceneChanged(int)));
 }
 
@@ -684,6 +685,7 @@ void OBSBasic::on_pauseStreamBtn_clicked()
 
 		m_bPauseClicked = true;
 		ui->pauseStreamBtn->setEnabled(false);
+		ui->restartStreamBtn->setVisible(true);
 		//StopStreaming();
 		StopRecording();
 	}
@@ -697,8 +699,9 @@ void OBSBasic::on_restartStreamBtn_clicked()
 	if (!outputHandler->RecordingActive()) {
 		m_bRestartCliecked = true;
 		ui->restartStreamBtn->setEnabled(false);
+		ui->pauseStreamBtn->setEnabled(true);
 		//StartStreaming();
-		StartStreaming();
+		StartRecording();
 	}
 }
 
