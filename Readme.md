@@ -60,8 +60,12 @@ error C2275
 # 修改代作为录屏软件
 ## 禁用登录操作
 ## 将直播改为录制操作
-
-
+## 修改配置文件在安装目录下
+> 修改 obs-app.cpp 文件
+```C
+  static bool portable_mode = true;//false ->true
+```
+![avatar](./img/config-dir.png)
 
 
 

@@ -69,7 +69,7 @@ static log_handler_t def_log_handler;
 static string currentLogFile;
 static string lastLogFile;
 
-static bool portable_mode = false;
+static bool portable_mode = true;//use portable_mode = false  
 
 QObject *CreateShortcutFilter()
 {
