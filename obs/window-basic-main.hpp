@@ -347,6 +347,8 @@ public slots:
 	void StartRecording();
 	void StopRecording();
 
+	void ShowRecordFile();
+
 	void RecordingStart();
 	void RecordingStop(int code);
 

@@ -724,6 +724,7 @@ void OBSBasic::on_stopStreamBtn_clicked()
 	}
 }
 
+
 void OBSBasic::on_pushbt_main_set_clicked()
 {
 	on_settingsButton_clicked();

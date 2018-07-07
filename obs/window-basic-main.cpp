@@ -3607,6 +3607,19 @@ void OBSBasic::StopRecording()
 		ui->profileMenu->setEnabled(true);
 		App()->DecrementSleepInhibition();
 	}
+
+	ShowRecordFile();
+}
+
+void OBSBasic::ShowRecordFile()
+{
+	
+	const char *mode = config_get_string(basicConfig, "Output", "Mode");
+	const char *path = strcmp(mode, "Advanced") ?
+		config_get_string(basicConfig, "SimpleOutput", "FilePath") :
+		config_get_string(basicConfig, "AdvOut", "RecFilePath");
+	QDesktopServices::openUrl(QUrl::fromLocalFile(path));
+	
 }
 
 void OBSBasic::RecordingStart()
