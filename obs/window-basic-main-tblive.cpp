@@ -160,6 +160,8 @@ void OBSBasic::InitTbliveUI()
 		ui->label_titlebar_nick->setToolTip(strUserName);
 	}
 
+	ui->label_titlebar_nick->setVisible(false);
+
 	ui->pushbt_main_restore->setVisible(false);
 
 	ui->pauseStreamBtn->setVisible(false);
