@@ -66,6 +66,8 @@ error C2275
   static bool portable_mode = true;//false ->true
 ```
 ![avatar](./img/config-dir.png)
+# obs-studio 模块图
+![avatar](./img/obs-studio.png)
 
 
 
